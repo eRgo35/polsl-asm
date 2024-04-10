@@ -1,0 +1,10 @@
+LIBRARY JALib2
+
+EXPORTS
+FindChar_1
+FindChar_2
+FindChar_3
+FindChar_4
+FindChar_5
+FindChar_6
+FindChar_7
