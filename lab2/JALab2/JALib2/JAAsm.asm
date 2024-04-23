@@ -2,11 +2,10 @@
 
 .data
 
-DataString  DB  '01234567890123456789AJBC', 0FFH  ; definicja ci¹gu znakow z wartownikiem 0xFF
+DataString  DB  '01234567890123456789AJBC', 0FFH  ; definicja ciÂ¹gu znakow z wartownikiem 0xFF
 
 
 .code
-
 ;****************************************************************************
 ;*    Procedura FindChar_1 wyszukiwania znaku 'J' w ciagu 'DataString'      *
 ;*                                                                          *
@@ -71,7 +70,7 @@ Done:
             RET                             ; powrot z procedury
 FindChar_2	ENDP	                          ; koniec FindChar_2
 
-LocalString  DB  '12345678901234567890123456789012345678901234567890JKLMWZS1', 0FFH  ; definicja ci¹gu znakow z wartownikiem 0xFF
+LocalString  DB  '12345678901234567890123456789012345678901234567890JKLMWZS1', 0FFH  ; definicja ciÂ¹gu znakow z wartownikiem 0xFF
 
 FindChar_3 PROC AppString: DWORD
 ;****************************************************************************
@@ -245,33 +244,63 @@ Done:
             RET                             ; powrot z procedury
 FindChar_6  ENDP                            ; koniec FindChar_6
 
-
+; DataString  DB  '01234567890123456789AJBC', 0FFH  ; definicja ciÂ¹gu znakow z wartownikiem 0xFF
 ;****************************************************************************
-;*    Procedura FindChar_7 wyszukiwania znaku 'J' w ci¹gu 'DataString'      *
+;*    Procedura FindChar_7 wyszukiwania znaku 'J' w ciÂ¹gu 'DataString'      *
 ;*                                                                          *
-;*      adresacja w³asna                                                    *
+;*      adresacja wÂ³asna                                                    *
 ;*      Parametry wejsciowe:                                                *
 ;*            AH - szukany znak 'J'                                         *
-;*            Proponowana adresacja uzyskania najmniejszej liczby taktów    *
+;*            Proponowana adresacja uzyskania najmniejszej liczby taktÃ³w    *
 ;*            procesora w trybie x86                                        *
 ;*                                                                          *
 ;*      Parametry wyjsciowe:                                                *
 ;*            EAX - BOOL TRUE Found, FALSE not found                        *
 ;*                                                                          *
 ;****************************************************************************
+
 FindChar_7  PROC  NEAR
+            MOV   EAX, 'JJJJ'  
+            MOV   ECX, 5
 
-; To do .......
+Check:
+            MOV   EBX, DWORD PTR [DataString + 4 * ECX]
+            XOR   EBX, EAX
+            TEST  BL, BL
+            JZ Done
+            TEST  BH, BH
+            JZ Done
 
+            SHR   EBX, QWORD
+            TEST  BL, BL
+            JZ Done
+            TEST  BH, BH
+            JZ Done
 
+            DEC ECX
+            TEST ECX, ECX
+            JNZ Check
 
-Not_Find:
-            MOV   EAX,0                     ; nie znaleziono znaku
-            RET
+            MOV   EBX, DWORD PTR [DataString]
+            XOR   EBX, EAX
+            TEST  BL, BL
+            JZ Done
+            TEST  BH, BH
+            JZ Done
+
+            SHR   EBX, QWORD
+            TEST  BL, BL
+            JZ Done
+            TEST  BH, BH
+            JZ Done
+
+Not_Found:
+            MOV   EAX,0                           ; nie znaleziono znaku
+            RET                                   ; powrot z procedury
 Done:
-            MOV   EAX,1                     ; znaleziono znak
-            RET                             ; powrot z procedury
-FindChar_7  ENDP                            ; koniec FindChar_7
+            MOV   EAX,1                           ; znaleziono znak
+            RET                                   ; powrot z procedury
+FindChar_7  ENDP                                  ; koniec FindChar_7
 
 
 ;****************************************************************************
