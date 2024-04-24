@@ -1,0 +1,8 @@
+LIBRARY JALib3
+
+EXPORTS
+MyProc1
+MyProc2
+MyProc3
+MyProc4
+MyProc5

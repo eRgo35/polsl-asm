@@ -74,57 +74,57 @@ ScaffoldingReadMe.txt
 StyleCopReport.xml
 
 # Files built by Visual Studio
-*_i.c
-*_p.c
-*_h.h
-*.ilk
-*.meta
-*.obj
-*.iobj
-*.pch
-*.pdb
-*.ipdb
-*.pgc
-*.pgd
-*.rsp
-*.sbr
-*.tlb
-*.tli
-*.tlh
-*.tmp
-*.tmp_proj
-*_wpftmp.csproj
-*.log
-*.tlog
-*.vspscc
-*.vssscc
-.builds
-*.pidb
-*.svclog
-*.scc
+# *_i.c
+# *_p.c
+# *_h.h
+# *.ilk
+# *.meta
+# *.obj
+# *.iobj
+# *.pch
+# *.pdb
+# *.ipdb
+# *.pgc
+# *.pgd
+# *.rsp
+# *.sbr
+# *.tlb
+# *.tli
+# *.tlh
+# *.tmp
+# *.tmp_proj
+# *_wpftmp.csproj
+# *.log
+# *.tlog
+# *.vspscc
+# *.vssscc
+# .builds
+# *.pidb
+# *.svclog
+# *.scc
 
 # Chutzpah Test files
 _Chutzpah*
 
 # Visual C++ cache files
-ipch/
-*.aps
-*.ncb
-*.opendb
-*.opensdf
-*.sdf
-*.cachefile
-*.VC.db
-*.VC.VC.opendb
+# ipch/
+# *.aps
+# *.ncb
+# *.opendb
+# *.opensdf
+# *.sdf
+# *.cachefile
+# *.VC.db
+# *.VC.VC.opendb
 
 # Visual Studio profiler
-*.psess
-*.vsp
-*.vspx
-*.sap
+# *.psess
+# *.vsp
+# *.vspx
+# *.sap
 
 # Visual Studio Trace Files
-*.e2e
+# *.e2e
 
 # TFS 2012 Local Workspace
 $tf/
@@ -153,8 +153,8 @@ coverage*.xml
 coverage*.info
 
 # Visual Studio code coverage results
-*.coverage
-*.coveragexml
+# *.coverage
+# *.coveragexml
 
 # NCrunch
 _NCrunch_*
@@ -291,32 +291,32 @@ FakesAssemblies/
 node_modules/
 
 # Visual Studio 6 build log
-*.plg
+# *.plg
 
 # Visual Studio 6 workspace options file
-*.opt
+# *.opt
 
 # Visual Studio 6 auto-generated workspace file (contains which files were open etc.)
-*.vbw
+# *.vbw
 
 # Visual Studio 6 auto-generated project file (contains which files were open etc.)
-*.vbp
+# *.vbp
 
 # Visual Studio 6 workspace and project file (working project files containing files to include in project)
-*.dsw
-*.dsp
+# *.dsw
+# *.dsp
 
 # Visual Studio 6 technical files
-*.ncb
-*.aps
+# *.ncb
+# *.aps
 
 # Visual Studio LightSwitch build output
-**/*.HTMLClient/GeneratedArtifacts
-**/*.DesktopClient/GeneratedArtifacts
-**/*.DesktopClient/ModelManifest.xml
-**/*.Server/GeneratedArtifacts
-**/*.Server/ModelManifest.xml
-_Pvt_Extensions
+# **/*.HTMLClient/GeneratedArtifacts
+# **/*.DesktopClient/GeneratedArtifacts
+# **/*.DesktopClient/ModelManifest.xml
+# **/*.Server/GeneratedArtifacts
+# **/*.Server/ModelManifest.xml
+# _Pvt_Extensions
 
 # Paket dependency manager
 .paket/paket.exe
@@ -355,7 +355,7 @@ OpenCover/
 ASALocalRun/
 
 # MSBuild Binary and Structured Log
-*.binlog
+# *.binlog
 
 # NVidia Nsight GPU debugger configuration file
 *.nvuser
@@ -364,16 +364,16 @@ ASALocalRun/
 .mfractor/
 
 # Local History for Visual Studio
-.localhistory/
+# .localhistory/
 
 # Visual Studio History (VSHistory) files
-.vshistory/
+# .vshistory/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
 
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
-MigrationBackup/
+# MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
