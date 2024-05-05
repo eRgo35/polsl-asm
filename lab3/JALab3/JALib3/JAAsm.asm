@@ -39,22 +39,14 @@ MyProc1 endp
 ;*                                                                                        *
 ;******************************************************************************************
 
-MyProc2 proc a2: QWORD a2, QWORD b2, QWORD c2, QWORD d2, QWORD e2, QWORD f2
-        xor rax, rax       ; RAX = 0
-        ror rcx,1          ; shift rcx right by 1
-        shld rcx,rcx,2     ; set flags registry
-        jnc ET1
-        mul b2
-        neg c2
-        add d2
-        add e2
-        add f2
-        ret                ; return z2 in EAX register
-  ET1:  mul 
-        neg c2
-        add d2
-        add e2
-        add f2
+; liczy iloczyn podanych argumentow
+MyProc2 proc a2: QWORD, b2: QWORD, c2: QWORD, d2: QWORD, e2: QWORD, f2: QWORD
+        mov rax, rcx
+        mul rdx
+        mul r8
+        mul r9
+        mul e2
+        mul f2
         ret                ; return z2 in EAX register
 MyProc2 endp
 
@@ -69,22 +61,11 @@ MyProc2 endp
 ;*                                                                                        *
 ;******************************************************************************************
 
-MyProc3 proc a3: REAL4 a3, REAL8 b3, REAL4 c3, REAL8 d3, REAL4 e3, REAL4 f3
+MyProc3 proc a3: REAL4, b3: REAL8, c3: REAL4, d3: REAL8, e3: REAL4, f3: REAL4
         xor rax, rax       ; RAX = 0
-        ror rcx,1          ; shift rcx right by 1
-        shld rcx,rcx,2     ; set flags registry
-        jnc ET1
-        mul b3
-        neg c3
-        add d3
-        add e3
-        add f3
-        ret                ; return z3 in EAX register
-  ET1:  mul 
-        neg c3
-        add d3
-        add e3
-        add f3
+        
+
+
         ret                ; return z3 in EAX register
 MyProc3 endp
 
@@ -99,22 +80,22 @@ MyProc3 endp
 ;*                                                                                        *
 ;******************************************************************************************
 
-MyProc4 proc a4: QWORD a4, REAL8 b4, REAL4 c4, REAL8 d4, REAL4 e4, REAL4 f4
+MyProc4 proc a4: QWORD, b4: REAL8, c4: REAL4, d4: REAL8, e4: REAL4, f4: REAL4
         xor rax, rax       ; RAX = 0
-        ror rcx,1          ; shift rcx right by 1
-        shld rcx,rcx,2     ; set flags registry
-        jnc ET1
-        mul b4
-        neg c4
-        add d4
-        add e4
-        add f4
-        ret                ; return z4 in EAX register
-  ET1:  mul 
-        neg c4
-        add d4
-        add e4
-        add f4
+;        ror rcx,1          ; shift rcx right by 1
+;        shld rcx,rcx,2     ; set flags registry
+;        jnc ET1
+;        mul b4
+;        neg c4
+;        add d4
+;        add e4
+;        add f4
+;        ret                ; return z4 in EAX register
+;  ET1:  mul 
+;        neg c4
+;        add d4
+;        add e4
+;        add f4
         ret                ; return z4 in EAX register
 MyProc4 endp
 
@@ -136,13 +117,13 @@ MyProc4 endp
 ;******************************************************************************************
 
 MyProc5 proc a5: QWORD, b5: xmmword
-        mov mm0, dword ptr[a5]
-        movaps xmm0, b5
-
-        addps xmm0, 2
-        movaps b5, xmm0
-        paddq mm0, mm0
-        movq qword ptr [a5], mm0
+;        mov mm0, dword ptr [a5]
+;        movaps xmm0, b5
+;
+;        addps xmm0, 2
+;        movaps b5, xmm0
+;        paddq mm0, mm0
+;        movq qword ptr [a5], mm0
         ret             
 MyProc5 endp
 

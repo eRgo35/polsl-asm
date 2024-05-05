@@ -32,6 +32,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     LoadStringW(hInstance, IDC_JALAB3, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance);
 
+    TCHAR szMessage[1000];
 
     /************************************************************************************************/
     // Call the MyProc1 assembler procedure from the JALib1.dll library in static mode
@@ -39,16 +40,46 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     z1 = MyProc1(a1, b1);   // Call MyProc1 from the JALib1.dll library in static mode
 
+    wsprintf(szMessage, L"MyProc1: %d", z1, MB_OK);
+    MessageBox(NULL, szMessage, L"MyProc1", MB_OK);
+
     /************************************************************************************************/
 
-    int a2, int b2, int c2, int d2, int e2, int f2, z2 = 0;
+    int a2 = 1;
+    int b2 = 2;
+    int c2 = 3;
+    int d2 = 4;
+    int e2 = 5;
+    int f2 = 6;
+    int z2 = 0;
     z2 = MyProc2(a2, b2, c2, d2, e2, f2);
 
-    float a3, double b3, float c3, double d3, float e3, float f3, int z3 = 0;
+    wsprintf(szMessage, L"MyProc2: %d", z2, MB_OK);
+    MessageBox(NULL, szMessage, L"MyProc2", MB_OK);
+
+    float a3 = 5.97219E24;
+    double b3 = 6.673E-11;
+    float c3 = 75.2;
+    double d3 = 736.72185181481379872663173355493233295190694021989393809328692498;
+    float e3 = 6.378E6;
+    float f3 = 6.378E6;
+    int z3 = 0;
     z3 = MyProc3(a3, b3, c3, d3, e3, f3);
 
-    int a4, double b4, int c4, float d4, int e4, float f4, int z4 = 0;
+    wsprintf(szMessage, L"MyProc3: %.6f", z3, MB_OK);
+    MessageBox(NULL, szMessage, L"MyProc3", MB_OK);
+
+    int a4 = 0;
+    double b4 = 0;
+    int c4 = 0;
+    float d4 = 0;
+    int e4 = 0;
+    float f4 = 0;
+    int z4 = 0;
     z4 = MyProc4(a4, b4, c4, d4, e4, f4);
+
+    wsprintf(szMessage, L"MyProc4: %d", z4, MB_OK);
+    MessageBox(NULL, szMessage, L"MyProc4", MB_OK);
 
     int z5    = 0;
     __m64 a5  = _mm_set_pi64x(0x123456LL);
@@ -56,6 +87,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     z5 = MyProc5(a5, b5);
 
+    wsprintf(szMessage, L"MyProc5: %d", z5, MB_OK);
+    MessageBox(NULL, szMessage, L"MyProc5", MB_OK);
 
     // Perform application initialization:
     if (!InitInstance (hInstance, nCmdShow))
