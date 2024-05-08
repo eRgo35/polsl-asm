@@ -61,10 +61,28 @@ MyProc2 endp
 ;*                                                                                        *
 ;******************************************************************************************
 
+num dq 100000.0
+
 MyProc3 proc a3: REAL4, b3: REAL8, c3: REAL4, d3: REAL8, e3: REAL4, f3: REAL4
         xor rax, rax       ; RAX = 0
         
+        addss xmm0, xmm2 ; 0.3
+        addsd xmm1, xmm3 ; 3.1416
 
+        movss xmm2, e3
+        movss xmm3, f3
+
+        subss xmm3, xmm2 ; -0.2
+
+        addss xmm0, xmm3 ; 0.1
+
+        cvtss2sd xmm0, xmm0 ; converts float to double
+
+        addsd xmm0, xmm1 ; should be converted before this can happen
+
+        mulsd xmm0, num ; multiplication by 100k to return an int with decimals
+
+        cvtsd2si rax, xmm0 ; 324160 because theres rounding
 
         ret                ; return z3 in EAX register
 MyProc3 endp
@@ -82,20 +100,24 @@ MyProc3 endp
 
 MyProc4 proc a4: QWORD, b4: REAL8, c4: REAL4, d4: REAL8, e4: REAL4, f4: REAL4
         xor rax, rax       ; RAX = 0
-;        ror rcx,1          ; shift rcx right by 1
-;        shld rcx,rcx,2     ; set flags registry
-;        jnc ET1
-;        mul b4
-;        neg c4
-;        add d4
-;        add e4
-;        add f4
-;        ret                ; return z4 in EAX register
-;  ET1:  mul 
-;        neg c4
-;        add d4
-;        add e4
-;        add f4
+        add rax, rcx
+        add rax, r8
+        
+        mov ebx, e4
+        add rax, rbx
+        
+        movss xmm2, f4
+        xorps xmm0, xmm0
+ET2: 
+        addss xmm0, xmm1
+        addss xmm0, xmm3
+        addss xmm0, xmm2
+
+        dec rax
+        jne ET2
+
+        cvtss2si rax, xmm0  
+
         ret                ; return z4 in EAX register
 MyProc4 endp
 
@@ -117,20 +139,63 @@ MyProc4 endp
 ;******************************************************************************************
 
 MyProc5 proc a5: QWORD, b5: xmmword
-;        mov mm0, dword ptr [a5]
-;        movaps xmm0, b5
-;
-;        addps xmm0, 2
-;        movaps b5, xmm0
-;        paddq mm0, mm0
-;        movq qword ptr [a5], mm0
-        ret             
+    xor rax, rax
+    mov rax, a5
+    mul rax
+    movd xmm1, rax
+    movss xmm0, dword ptr b5
+    mov rcx, 10
+
+ET1:    
+    psubusw xmm0, xmm1
+    dec rcx
+    jne ET1
+
+    movd rax, xmm0
+
+    ret
 MyProc5 endp
 
 
 
+AsmText db 'Laboratorium z Jezykow Asemblerowych', 13, 10
+AsmLen equ $ - AsmText
+Alphabet equ AsmLen + 26
 
+ModifyBuffer proc bufp: BYTE
+    mov rdx, rcx ; adres bufora do rdx
 
+    xor rcx, rcx ; zerowanie pod petle
+    mov rsi, offset AsmText ; ladowanie tekstu
+
+; zamienia litera A na tekst
+LABEL1:
+    mov al, [rsi] ; ladowanie znaku
+    mov BYTE PTR [rdx + rcx], al ; podmiana znaku
+    inc rsi
+    inc rcx 
+    cmp rcx, AsmLen 
+    jne LABEL1
+    
+; zamienia reszte liter A na alfabet
+    mov al, 'A' ; ladowanie pierwszej litery
+LABEL2:
+    mov BYTE PTR [rdx + rcx], al ; podmiana znaku
+    inc al ; przechodzi do nastepnego znaku ascii
+    inc rcx
+    cmp rcx, Alphabet
+    jne LABEL2
+
+; zamiana reszty znakow na *
+    mov al, '*' ; ladowanie znaku
+LABEL3:
+    mov BYTE PTR [rdx + rcx], al ; podmiana znaku
+    inc rcx
+    cmp rcx, 255 ; wypelnienie bufora do konca
+    jne LABEL3
+
+    ret
+ModifyBuffer endp
 
 ;*******************************************************************************
 END                        ; End of ASM file

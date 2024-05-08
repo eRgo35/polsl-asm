@@ -57,24 +57,24 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     wsprintf(szMessage, L"MyProc2: %d", z2, MB_OK);
     MessageBox(NULL, szMessage, L"MyProc2", MB_OK);
 
-    float a3 = 5.97219E24;
-    double b3 = 6.673E-11;
-    float c3 = 75.2;
-    double d3 = 736.72185181481379872663173355493233295190694021989393809328692498;
-    float e3 = 6.378E6;
-    float f3 = 6.378E6;
-    int z3 = 0;
+    float a3 = 0.1;
+    double b3 = 0.0001;
+    float c3 = 0.2;
+    double d3 = 3.1415;
+    float e3 = 6.3;
+    float f3 = 6.1;
+    int z3 = 100;
     z3 = MyProc3(a3, b3, c3, d3, e3, f3);
 
-    wsprintf(szMessage, L"MyProc3: %.6f", z3, MB_OK);
+    wsprintf(szMessage, L"MyProc3: %d", z3, MB_OK);
     MessageBox(NULL, szMessage, L"MyProc3", MB_OK);
 
-    int a4 = 0;
-    double b4 = 0;
-    int c4 = 0;
-    float d4 = 0;
-    int e4 = 0;
-    float f4 = 0;
+    int a4 = 2;
+    double b4 = 0.1;
+    int c4 = 3;
+    float d4 = 0.2;
+    int e4 = 4;
+    float f4 = 0.3;
     int z4 = 0;
     z4 = MyProc4(a4, b4, c4, d4, e4, f4);
 
@@ -89,6 +89,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     wsprintf(szMessage, L"MyProc5: %d", z5, MB_OK);
     MessageBox(NULL, szMessage, L"MyProc5", MB_OK);
+
+    BYTE buffer[256];
+    memset(buffer, 'A', sizeof(buffer));
+    buffer[sizeof(buffer) - 1] = '\0';
+
+    ModifyBuffer(buffer);
+
+    wsprintf(szMessage, L"Bufor: %S", buffer, MB_OK);
+    MessageBox(NULL, szMessage, L"Bufor", MB_OK);
 
     // Perform application initialization:
     if (!InitInstance (hInstance, nCmdShow))
