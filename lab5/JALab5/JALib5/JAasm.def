@@ -1,0 +1,4 @@
+LIBRARY JALib5
+EXPORTS
+RadToDegAsm
+CpuIdAsm

@@ -26,5 +26,8 @@
     <ClInclude Include="RadToDeg.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RadToDegAsm.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

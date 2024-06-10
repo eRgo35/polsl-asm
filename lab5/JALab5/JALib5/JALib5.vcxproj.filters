@@ -30,4 +30,14 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <MASM Include="JAasm.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="JAasm.def">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>

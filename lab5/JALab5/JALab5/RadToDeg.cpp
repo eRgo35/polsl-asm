@@ -4,7 +4,7 @@
 #include <emmintrin.h> // SSE2 instructions library header
 #include <Windows.h>
 
-double RadToDegNMEACpp(double dRad, BOOL bSSE2)
+double RadToDegCpp(double dRad, BOOL bSSE2)
 {
 	double dDeg = 0.0;
 	double dRem = 0.0, dx;

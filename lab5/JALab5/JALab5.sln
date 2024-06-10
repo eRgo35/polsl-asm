@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JALab5", "JALab5\JALab5.vcxproj", "{FC691E5A-DD54-4830-AB45-2B7CE8E3F232}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FCF4B8FF-83C6-4729-9828-FF259A1FB30F} = {FCF4B8FF-83C6-4729-9828-FF259A1FB30F}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JALib5", "JALib5\JALib5.vcxproj", "{FCF4B8FF-83C6-4729-9828-FF259A1FB30F}"
 EndProject

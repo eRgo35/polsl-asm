@@ -6,6 +6,7 @@
 #include <intrin.h>
 
 #include "RadToDeg.hpp"
+#include "RadToDegAsm.hpp"
 
 #include <iostream>
 #include <format>
@@ -467,18 +468,22 @@ int main(int argc, char* argv[])
 	std::cout << "------------ RadToDegCpp ------------" << std::endl;
 
 	double rad = 10;
-	double degCpp = RadToDegNMEACpp(rad, isSSE2);
+	double degCpp = RadToDegCpp(rad, isSSE2);
 
 	std::cout << "Rad: " << rad << std::endl;
 	std::cout << "RadToDegCpp: " << std::format("{}", degCpp) << std::endl;
 
 	std::cout << "------------ RadToDegAsm ------------" << std::endl;
 	
-	double degAsm = RadToDegNMEACpp(rad, isSSE2);
+	bool isSSEAsm = CpuIdAsm();
+
+	std::cout << isSSEAsm << std::endl;
+
+	double degAsm = RadToDegAsm(rad, isSSEAsm);
 
 	std::cout << "Rad: " << rad << std::endl;
 	std::cout << "RadToDegAsm: " << std::format("{}", degAsm) << std::endl;
-
+	 
 	std::cout << "------------ Calculator ------------" << std::endl;
 
 	double deg = 572.9577951308;
