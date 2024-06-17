@@ -452,7 +452,7 @@ int main(int argc, char* argv[])
 			nNumberSets + 1);
 	}
 
-	// ------------------------------------------ MMX SSE SSE2 ------------------------------------------
+	// ------------------------------------------ MMX SSE SSE2 CPP ------------------------------------------
 	std::cout << "------------ MMX SSE SSE2 ------------" << std::endl;
 
 	std::cout << isMMX << " " << isSSE << " " << isSSE2 << std::endl;
@@ -464,6 +464,18 @@ int main(int argc, char* argv[])
 
 	std::cout << "MMX, SSE, and SSE2 are supported" << std::endl;
 
+	// ------------------------------------------ MMX SSE SSE2 ASM ------------------------------------------
+	bool isSSEAsm = CpuIdAsm();
+
+	std::cout << isSSEAsm << std::endl;
+
+	if (!isSSEAsm) {
+		std::cout << "SSE not supported" << std::endl;
+		return 0;
+	}
+
+	std::cout << "SSE supported" << std::endl;
+
 	// ------------------------------------------ RadToDeg IMPL ------------------------------------------
 	std::cout << "------------ RadToDegCpp ------------" << std::endl;
 
@@ -474,10 +486,6 @@ int main(int argc, char* argv[])
 	std::cout << "RadToDegCpp: " << std::format("{}", degCpp) << std::endl;
 
 	std::cout << "------------ RadToDegAsm ------------" << std::endl;
-	
-	bool isSSEAsm = CpuIdAsm();
-
-	std::cout << isSSEAsm << std::endl;
 
 	double degAsm = RadToDegAsm(rad, isSSEAsm);
 
@@ -486,13 +494,10 @@ int main(int argc, char* argv[])
 	 
 	std::cout << "------------ Calculator ------------" << std::endl;
 
-	double deg = 572.9577951308;
+	double deg = 572.9577951308232;
 
 	std::cout << "Rad: " << rad << std::endl;
-	std::cout << "Deg: " << std::format("{}", deg) << std::endl;
-
-	// ------------------------------------------ RadToDeg IMPL ------------------------------------------
-
+	std::cout << "Deg:         " << std::format("{}", deg) << std::endl;
 
 	return nRet;
 }
